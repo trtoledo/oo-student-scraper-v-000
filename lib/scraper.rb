@@ -24,17 +24,6 @@ class Scraper
       }
     end
 
-  #  @cards = doc.css(".roster-cards-container")
-  #  @cards.each do |card|
-  #    students={
-  #      name: card.css(".student-name").text,
-  #      location: card.css(".student-location").text,
-  #      profile_url: card.css("a").attribute("href").value
-  #    }
-  #    all << students
-#
-  #      end
-  #      all
     #binding.pry
 
   end#self.scrape_index_page
