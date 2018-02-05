@@ -14,17 +14,27 @@ class Scraper
     all = []
 
     doc = Nokogiri::HTML(open(index_url))
-    @cards = doc.css(".roster-cards-container")
-    @cards.each do |card|
-      students={
-        name: card.css(".student-name").text,
-        location: card.css(".student-location").text,
-        profile_url: card.css("a").attribute("href").value
-      }
-      all << students
 
-        end
-        all
+    students = doc.css(".roster-cards-container .student-card")
+    students.collect do |student|
+      {
+        :name => student.css("h4.student-name").text,
+   		  :location => student.css("p.student-location").text,
+   		  :profile_url => student.css("a").attribute("href").value
+      }
+    end
+
+  #  @cards = doc.css(".roster-cards-container")
+  #  @cards.each do |card|
+  #    students={
+  #      name: card.css(".student-name").text,
+  #      location: card.css(".student-location").text,
+  #      profile_url: card.css("a").attribute("href").value
+  #    }
+  #    all << students
+#
+  #      end
+  #      all
     #binding.pry
 
   end#self.scrape_index_page
